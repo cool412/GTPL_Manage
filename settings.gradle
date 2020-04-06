@@ -1,0 +1,2 @@
+rootProject.name='GTPL_Manage'
+include ':app'

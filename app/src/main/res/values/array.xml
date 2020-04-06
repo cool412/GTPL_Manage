@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- These are the options displayed in the credit/debit drop-down Spinner -->
+    <string-array name="array_credit_debit_options">
+        <item>@string/entry_credit</item>
+        <item>@string/entry_debit</item>
+    </string-array>
+</resources>
