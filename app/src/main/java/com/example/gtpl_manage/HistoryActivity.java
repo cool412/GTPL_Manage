@@ -23,8 +23,10 @@ public class HistoryActivity extends AppCompatActivity implements LoaderManager.
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
-        mHistoryUri = CustomerEntry.RECORD_URI;
+        setContentView(R.layout.activity_history);
+
+        //Intent intent = getIntent();
+        //mHistoryUri = CustomerEntry.RECORD_URI;
         //int currentId = intent.getIntExtra("currentId",0);
 
         //Find the view by id.
@@ -43,16 +45,17 @@ public class HistoryActivity extends AppCompatActivity implements LoaderManager.
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         // define projection.
         String[] projection = {
-                CustomerEntry.D_ID,
-                CustomerEntry.ADD_DEBIT,
-                CustomerEntry.DEBIT_DATE,
-                CustomerEntry.DEBIT_RECEIPT};
-
-        return new CursorLoader(this,
-                mHistoryUri,
-                projection,
-                null,
-                null,
+                CustomerEntry._ID,
+                CustomerEntry.COLUMN_CUSTOMER_NAME,
+                CustomerEntry.COLUMN_CUSTOMER_ACCOUNT,
+                CustomerEntry.COLUMN_CUSTOMER_MOBILE,
+                CustomerEntry.COLUMN_CUSTOMER_TOTAL};
+        // This loader will execute the ContentProvider's query method in background thread
+        return new CursorLoader(this,    // Parent activity context
+                CustomerEntry.CONTENT_URI,           //Provider content to URI
+                projection,                     //Columns to include in resulting Cursor
+                null,                  // No Selection clause
+                null,               // No selection arguments
                 null);
     }
 
